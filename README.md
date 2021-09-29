@@ -1,3 +1,10 @@
+# TODO
+
+installation instructions
+requirements
+usage instructions
+example images
+
 # hdc2021-psfnn
 Deblur images of the HDC2021 dataset.
 
