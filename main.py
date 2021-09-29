@@ -107,21 +107,18 @@ def deblur(blurry, net, step, device):
 
     return deblurred_image
 
-def main():
-    step = "3"
-
+def main(step="4", font="Times"):
     if len(sys.argv) == 4:
         _, input_dir, output_dir, step = sys.argv
     else:
         print("Usage:\n    python3 main.py path/to/input/files path/to/output/files 3\n")
 
-        # TODO
-        font = "Times"
         input_dir = os.path.expanduser(f"~/data/hdc2021/step{step}/{font}/CAM02/")
         output_dir = f"tmp/step{step}/{font}"
         print("Choosing default input dir", input_dir)
         print("Choosing default output dir", output_dir)
 
+    os.makedirs("tmp", exist_ok=True)
     os.makedirs(output_dir, exist_ok=True)
 
     device = torch.device("cuda")
@@ -169,3 +166,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+    # Run for all steps and fonts
+    #for step in "123456789":
+    #    for font in "Verdana", "Times":
+    #        main(step=step, font=font)
