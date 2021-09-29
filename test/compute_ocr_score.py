@@ -4,7 +4,7 @@ import numpy as np
 import multiprocessing.pool
 
 def main():
-    step = 3
+    step = 4
     font = "Times"
 
     input_dir = f"../tmp/step{step}/{font}"

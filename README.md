@@ -21,6 +21,20 @@ For each stage/step:
 3. Blur a bunch of natural images from DIV2K dataset with estimated PSF.
 4. Jointly train a neural network to deblur images from both the DIV2K dataset and the HDC2021 dataset.
 
+# Usage
+
+```
+python3 main.py path/to/input/files path/to/output/files 3
+```
+
+where `3` is the stage/step of the HDC2021 dataset.
+
+Alternatively, place the HDC2021 directories at `~/data/hdc2021/step1/` etc., adjust `step` and `font` in `main.py` and then run without arguments.
+
+This will download the appropriate neural network and apply it to all images in the input directory to produce images in the output directory.
+
+After that, change to the `test` directory, modify `step` and `font` in `compute_ocr_score.py` and then run it.
+
 # Citations
 
 The neural network used here is adapted (almost entirely copied) from [https://github.com/MarcoForte/FBA_Matting](F, B, Alpha Matting)
@@ -42,11 +56,11 @@ NTIRE 2017 Challenge on Single Image Super-Resolution: Dataset and Study
 
 ```
 @InProceedings{Agustsson_2017_CVPR_Workshops,
-	author = {Agustsson, Eirikur and Timofte, Radu},
-	title = {NTIRE 2017 Challenge on Single Image Super-Resolution: Dataset and Study},
-	booktitle = {The IEEE Conference on Computer Vision and Pattern Recognition (CVPR) Workshops},
-	month = {July},
-	year = {2017}
+    author = {Agustsson, Eirikur and Timofte, Radu},
+    title = {NTIRE 2017 Challenge on Single Image Super-Resolution: Dataset and Study},
+    booktitle = {The IEEE Conference on Computer Vision and Pattern Recognition (CVPR) Workshops},
+    month = {July},
+    year = {2017}
 }
 ```
 
