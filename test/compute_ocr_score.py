@@ -45,14 +45,25 @@ def compute_score(step="4", font="Times"):
 
 def compute_all_scores():
     ocr_scores = {}
-    for step in "123456789":
+    steps = list(map(str, range(11)))
+    fonts = ["Verdana", "Times"]
+
+    for step in steps:
         ocr_scores[step] = {}
         for font in "Verdana", "Times":
             score = compute_score(step=step, font=font)
             ocr_scores[step][font] = score
+
     with open("../tmp/ocr_scores.json", "w") as f:
         json.dump(ocr_scores, f, indent=4)
-        print(json.dumps(ocr_scores, indent=4))
+
+    print(json.dumps(ocr_scores, indent=4))
+    print()
+    print("|Step|" + "|".join(fonts) + "|")
+    print("|---|---|---|")
+    for step in steps:
+        row = [step] + [ocr_scores[step][font] for font in fonts]
+        print("|" + "|".join(map(str, row)) + "|")
 
 if __name__ == "__main__":
     compute_all_scores()

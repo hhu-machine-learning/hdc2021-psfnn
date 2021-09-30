@@ -57,28 +57,20 @@ This will download the appropriate neural network and apply it to all images in 
 
 After that, change to the `test` directory, modify `step` and `font` in `compute_ocr_score.py` and then run it.
 
-# Results
+# OCR Scores
 
-| Step | Font | OCR score |
+|Step|Verdana|Times|
 |---|---|---|
-|1|Verdana|96.95|
-|1|Times|93.26|
-|2|Verdana|97.3|
-|2|Times|81.69|
-|3|Verdana|96.57|
-|3|Times|81.06|
-|4|Verdana|97.15|
-|4|Times|96.53|
-|5|Verdana|98.36|
-|5|Times|95.47|
-|6|Verdana|96.65|
-|6|Times|94.61|
-|7|Verdana|96.04|
-|7|Times|93.95|
-|8|Verdana|92.15|
-|8|Times|87.68|
-|9|Verdana|83.63|
-|9|Times|70.54|
+|0|97.82|94.46|
+|1|97.01|95.23|
+|2|97.36|94.78|
+|3|97.07|95.89|
+|4|97.15|96.53|
+|5|98.36|95.47|
+|6|96.65|94.61|
+|7|96.04|93.95|
+|8|92.15|87.68|
+|9|83.63|70.54|
 
 Notes:
 * The input images are simply used as-is for step 1, 2 and 3 without any deblurring since that passes the 70% OCR threshold of the challenge without wasting a few hours of additional compute.

@@ -69,10 +69,6 @@ def deblur(blurry, net, step, device):
     assert(isinstance(blurry, np.ndarray))
     assert(blurry.dtype == np.float32)
 
-    if step in ["0", "1", "2", "3"]:
-        print("Not doing any deblurring for steps before 4 because that would be a waste of energy since it passes the OCR tests anyway")
-        return blurry
-
     blur_model = torch.load(f"train/psfs/step_{step}.pth")
 
     M = blur_model.M
@@ -107,42 +103,29 @@ def deblur(blurry, net, step, device):
 
     return deblurred_image
 
-def main(step="4", font="Times"):
-    if len(sys.argv) == 4:
-        _, input_dir, output_dir, step = sys.argv
-    else:
-        print("Usage:\n    python3 main.py path/to/input/files path/to/output/files 3\n")
-
-        input_dir = os.path.expanduser(f"~/data/hdc2021/step{step}/{font}/CAM02/")
-        output_dir = f"tmp/step{step}/{font}"
-        print("Choosing default input dir", input_dir)
-        print("Choosing default output dir", output_dir)
-
+def deblur_directories(input_dir, output_dir, step):
     os.makedirs("tmp", exist_ok=True)
     os.makedirs(output_dir, exist_ok=True)
 
     device = torch.device("cuda")
 
-    if step in ["0", "1", "2", "3"]:
-        net = None
-    else:
-        orig_resnet = l_resnet50()
-        net_encoder = ResnetDilated(orig_resnet, dilate_scale=8)
-        net_decoder = fba_decoder(num_output_channels=1, batch_norm=False)
-        net = MattingModule(net_encoder, net_decoder).to(device)
+    orig_resnet = l_resnet50()
+    net_encoder = ResnetDilated(orig_resnet, dilate_scale=8)
+    net_decoder = fba_decoder(num_output_channels=1, batch_norm=False)
+    net = MattingModule(net_encoder, net_decoder).to(device)
 
-        path = f"tmp/blur_exp030_step_{step}_batch_50000.pth"
+    path = f"tmp/blur_train_step_{step}_batch_50000.pth"
 
-        if not os.path.isfile(path):
-            print(f"Now downloading neural network for step {step} (132 MB).")
-            print("This might take a while...")
-            url = f"https://asdf10.com/blur_exp030_step_{step}_batch_50000.pth"
-            urllib.request.urlretrieve(url, path)
-            print("Network has been downloaded.")
+    if not os.path.isfile(path):
+        print(f"Now downloading neural network for step {step} (132 MB).")
+        print("This might take a while...")
+        url = f"https://asdf10.com/blur_train_step_{step}_batch_50000.pth"
+        urllib.request.urlretrieve(url, path)
+        print("Network has been downloaded.")
 
-        # TODO map to device on load
-        net.load_state_dict(torch.load(path))
-        net.eval()
+    # TODO map to device on load
+    net.load_state_dict(torch.load(path))
+    net.eval()
 
     for input_filename in sorted(os.listdir(input_dir)):
         if "." not in input_filename: continue
@@ -166,9 +149,29 @@ def main(step="4", font="Times"):
         print("saved to", output_path)
         print()
 
+def main():
+    if len(sys.argv) == 4:
+        _, input_dir, output_dir, step = sys.argv
+    else:
+        print("Usage:\n    python3 main.py path/to/input/files path/to/output/files 3\n")
+        return
+
+    deblur_directories(input_dir, output_dir, step)
+
+def main_deblur_all():
+    for step in ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]:
+        for font in "Verdana", "Times":
+
+            input_dir = os.path.expanduser(f"~/data/hdc2021/step{step}/{font}/CAM02/")
+            output_dir = f"tmp/step{step}/{font}"
+
+            print()
+            print("Input dir", input_dir)
+            print("Output dir", output_dir)
+            print()
+
+            deblur_directories(input_dir, output_dir, step)
+
 if __name__ == "__main__":
     main()
-    # Run for all steps and fonts
-    #for step in "123456789":
-    #    for font in "Verdana", "Times":
-    #        main(step=step, font=font)
+    #main_deblur_all()
