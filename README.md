@@ -121,6 +121,16 @@ NTIRE 2017 Challenge on Single Image Super-Resolution: Dataset and Study
 
 (All affiliated with Heinrich Heine University Düsseldorf)
 
+# Some images
+
+Point spread function estimate for step 4
+
+![Point spread function estimate for step 4](https://raw.githubusercontent.com/hhu-machine-learning/hdc2021-psfnn/main/train/images/psf_step_4.png?token=AEO3SLNFFKQP723X542OPADBL3DT4)
+
+Sharp input image, blurry target image, convolved sharp image + offset and the difference between the last two multiplied by 10.
+
+![Point spread function estimate for step 4](https://raw.githubusercontent.com/hhu-machine-learning/hdc2021-psfnn/main/train/images/psf_blurred_step_4.png?token=AEO3SLI7JQF7CFBPJLG5XHTBL3DTW)
+
 # TODO
 
 * example images
