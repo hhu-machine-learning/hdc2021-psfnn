@@ -1,12 +1,9 @@
 from OCR_evaluation import evaluateImage as compute_ocr_score
-import os, glob
+import os, json, glob
 import numpy as np
 import multiprocessing.pool
 
-def main():
-    step = 4
-    font = "Times"
-
+def compute_score(step="4", font="Times"):
     input_dir = f"../tmp/step{step}/{font}"
     txt_dir = os.path.expanduser(f"~/data/hdc2021/step{step}/{font}/CAM02")
 
@@ -44,6 +41,18 @@ def main():
     mean_score = np.mean(ocr_scores)
     print(f"Step {step} - {font} Font - OCR score {mean_score}")
     print()
+    return mean_score
+
+def compute_all_scores():
+    ocr_scores = {}
+    for step in "123456789":
+        ocr_scores[step] = {}
+        for font in "Verdana", "Times":
+            score = compute_score(step=step, font=font)
+            ocr_scores[step][font] = score
+    with open("../tmp/ocr_scores.json", "w") as f:
+        json.dump(ocr_scores, f, indent=4)
+        print(json.dumps(ocr_scores, indent=4))
 
 if __name__ == "__main__":
-    main()
+    compute_all_scores()

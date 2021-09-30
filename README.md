@@ -1,11 +1,5 @@
-# TODO
-
-installation instructions
-requirements
-usage instructions
-example images
-
 # hdc2021-psfnn
+
 Deblur images of the HDC2021 dataset.
 
 * [Challenge Website: https://www.fips.fi/HDCdata.php#anchor1](https://www.fips.fi/HDCdata.php#anchor1)
@@ -21,6 +15,34 @@ For each stage/step:
 3. Blur a bunch of natural images from DIV2K dataset with estimated PSF.
 4. Jointly train a neural network to deblur images from both the DIV2K dataset and the HDC2021 dataset.
 
+# Installation instructions
+
+Currently, the test code requires a GPU with lots of VRAM (we used an NVIDIA A100 GPU with 40 GB VRAM).
+
+To install PyTorch, visit https://pytorch.org/ and follow the installation instructions.
+
+After that, running `pip install pillow numpy opencv-python` is probably sufficient for testing.
+
+The following combinations of libraries have been testet to work. Others might work as well.
+
+Debian 10:
+
+```
+torch==1.8.1+cu111
+opencv-python==4.4.0.42
+Pillow==8.2.0
+numpy==1.20.1
+```
+
+Windows 10:
+
+```
+torch==1.9.0+cu111
+opencv-contrib-python==4.5.2.54
+Pillow==8.2.0
+numpy==1.20.3
+```
+
 # Usage
 
 ```
@@ -34,6 +56,33 @@ Alternatively, place the HDC2021 directories at `~/data/hdc2021/step1/` etc., ad
 This will download the appropriate neural network and apply it to all images in the input directory to produce images in the output directory.
 
 After that, change to the `test` directory, modify `step` and `font` in `compute_ocr_score.py` and then run it.
+
+# Results
+
+| Step | Font | OCR score |
+|---|---|---|
+|1|Verdana|96.95|
+|1|Times|93.26|
+|2|Verdana|97.3|
+|2|Times|81.69|
+|3|Verdana|96.57|
+|3|Times|81.06|
+|4|Verdana|97.15|
+|4|Times|96.53|
+|5|Verdana|98.36|
+|5|Times|95.47|
+|6|Verdana|96.65|
+|6|Times|94.61|
+|7|Verdana|96.04|
+|7|Times|93.95|
+|8|Verdana|92.15|
+|8|Times|87.68|
+|9|Verdana|83.63|
+|9|Times|70.54|
+
+Notes:
+* The input images are simply used as-is for step 1, 2 and 3 without any deblurring since that passes the 70% OCR threshold of the challenge without wasting a few hours of additional compute.
+* Most hyperparameters are not optimized. It is very likely that more stages could be passed by training a neural network on larger image crops.
 
 # Citations
 
@@ -71,3 +120,9 @@ NTIRE 2017 Challenge on Single Image Super-Resolution: Dataset and Study
 * Stefan Harmeling
 
 (All affiliated with Heinrich Heine University Düsseldorf)
+
+# TODO
+
+* example images
+* remove GPU dependency
+* remove OpenCV dependency
