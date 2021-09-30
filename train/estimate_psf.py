@@ -32,7 +32,7 @@ def optimize_model(model, sharp, blurry):
         optimizer.step(closure)
 
     # remove return statement to look at PSFs
-    return
+    #return
 
     with torch.no_grad():
         loss, mse, difference, sharp_convolved, blurry_cropped = model.loss(sharp, blurry)
@@ -69,6 +69,7 @@ def main():
     font = "Times"
 
     psf_radii = {
+        0: 15,
         1: 15,
         2: 25,
         3: 35,
@@ -81,6 +82,7 @@ def main():
     }
 
     initial_offsets = {
+        0: 0.135,
         1: 0.135,
         2: 0.2,
         3: 0.3,
@@ -93,6 +95,7 @@ def main():
     }
 
     psf_regularizations = {
+        0: 1,
         1: 1,
         2: 2,
         3: 5,
@@ -104,7 +107,8 @@ def main():
         9: 80,
     }
 
-    for step in range(1, 10):
+    #for step in range(10):
+    for step in [0]:
         print("step", step)
         psf_radius = psf_radii[step]
         initial_offset = initial_offsets[step]
