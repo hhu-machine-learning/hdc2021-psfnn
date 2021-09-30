@@ -80,6 +80,7 @@ def main():
         8: 90,
         9: 110,
         10: 130,
+        11: 170,
     }
 
     initial_offsets = {
@@ -94,6 +95,7 @@ def main():
         8: 0.4,
         9: 0.4,
         10: 0.4,
+        11: 0.4,
     }
 
     psf_regularizations = {
@@ -108,9 +110,10 @@ def main():
         8: 40,
         9: 80,
         10: 100,
+        11: 120,
     }
 
-    for step in range(10):
+    for step in range(12):
         print("step", step)
         psf_radius = psf_radii[step]
         initial_offset = initial_offsets[step]
@@ -141,7 +144,7 @@ def main():
         del model
 
 def test():
-    step = 10
+    step = 11
     sample = 2
     font = "Times"
     model = torch.load(f"psfs/step_{step}.pth")
