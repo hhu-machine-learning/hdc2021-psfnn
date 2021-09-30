@@ -113,13 +113,13 @@ NTIRE 2017 Challenge on Single Image Super-Resolution: Dataset and Study
 
 (All affiliated with Heinrich Heine University Düsseldorf)
 
-# Some images
+# Images
 
-Point spread function estimate for step 4
+The point spread function estimate for step 4 is shown below. With a bit of imagination, the aperture shape of the Canon EF 100mm f/2.8 USM Macro lens can be seen.
 
 ![Point spread function estimate for step 4](https://raw.githubusercontent.com/hhu-machine-learning/hdc2021-psfnn/main/train/images/psf_step_4.png?token=AEO3SLNFFKQP723X542OPADBL3DT4)
 
-Sharp input image, blurry target image, convolved sharp image + offset and the difference between the last two multiplied by 10.
+A sharp input image, blurry target image, convolved sharp image + offset and the difference between the last two multiplied by 10 is shown below. The error is larger on the top right of the image, which suggests that a spatially varying PSF could improve results further.
 
 ![Point spread function estimate for step 4](https://raw.githubusercontent.com/hhu-machine-learning/hdc2021-psfnn/main/train/images/psf_blurred_step_4.png?token=AEO3SLI7JQF7CFBPJLG5XHTBL3DTW)
 
