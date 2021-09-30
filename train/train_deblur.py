@@ -270,7 +270,8 @@ def train(net, args, num_batches, lr, device, train_samples, test_samples, step,
 
         if batch == 1 or batch % 1000 == 0:
             parent_dir = os.path.split(os.path.abspath("."))[1]
-            path = f"../output/blur_{parent_dir}_step_{step}_batch_{batch}.pth"
+            os.makedirs("../tmp", exist_ok=True)
+            path = f"../tmp/blur_{parent_dir}_step_{step}_batch_{batch}.pth"
             torch.save(net.state_dict(), path)
             print("saved net to", path)
 
@@ -280,7 +281,7 @@ def train(net, args, num_batches, lr, device, train_samples, test_samples, step,
     return optimizer
 
 def main():
-    step = 9
+    step = 10
     #font = "Verdana"
     fonts = ["Times", "Verdana"]
 
