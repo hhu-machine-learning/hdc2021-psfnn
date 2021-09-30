@@ -140,6 +140,6 @@ A sharp input image, blurry target image, convolved sharp image + offset and the
 | 9 |![step9](train/images/original/focusStep_9_timesR_size_30_sample_0100_resized.png)|![step9-deblurred](train/images/deblurred/focusStep_9_timesR_size_30_sample_0100_resized.png)|
 | 10|![step10](train/images/original/focusStep_10_timesR_size_30_sample_0100_resized.png)|![step10-deblurred](train/images/deblurred/focusStep_10_timesR_size_30_sample_0100_resized.png)|
 
-* example images
+# Todos
 * remove GPU dependency
 * remove OpenCV dependency
