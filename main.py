@@ -145,6 +145,8 @@ def main(step="4", font="Times"):
         net.eval()
 
     for input_filename in sorted(os.listdir(input_dir)):
+        if "." not in input_filename: continue
+
         name, ext = split_ext(input_filename)
 
         # Skip files where file extension does not look like image files
