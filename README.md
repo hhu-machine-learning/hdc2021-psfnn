@@ -124,7 +124,21 @@ A sharp input image, blurry target image, convolved sharp image + offset and the
 
 ![Point spread function estimate for step 4](https://raw.githubusercontent.com/hhu-machine-learning/hdc2021-psfnn/main/train/images/psf_blurred_step_4.png?token=AEO3SLI7JQF7CFBPJLG5XHTBL3DTW)
 
-# TODO
+# Example Images (Times)
+
+| Step |         Original                    |         Deblurred                    |
+|:----:|:-----------------------------------:|:------------------------------------:|
+| 0 |![step0](train/images/original/focusStep_0_timesR_size_30_sample_0100_resized.png)|![step0-deblurred](train/images/deblurred/focusStep_0_timesR_size_30_sample_0100_resized.png)|
+| 1 |![step1](train/images/original/focusStep_1_timesR_size_30_sample_0100_resized.png)|![step1-deblurred](train/images/deblurred/focusStep_1_timesR_size_30_sample_0100_resized.png)|
+| 2 |![step2](train/images/original/focusStep_2_timesR_size_30_sample_0100_resized.png)|![step2-deblurred](train/images/deblurred/focusStep_2_timesR_size_30_sample_0100_resized.png)|
+| 3 |![step3](train/images/original/focusStep_3_timesR_size_30_sample_0100_resized.png)|![step3-deblurred](train/images/deblurred/focusStep_3_timesR_size_30_sample_0100_resized.png)|
+| 4 |![step4](train/images/original/focusStep_4_timesR_size_30_sample_0100_resized.png)|![step4-deblurred](train/images/deblurred/focusStep_4_timesR_size_30_sample_0100_resized.png)|
+| 5 |![step5](train/images/original/focusStep_5_timesR_size_30_sample_0100_resized.png)|![step5-deblurred](train/images/deblurred/focusStep_5_timesR_size_30_sample_0100_resized.png)|
+| 6 |![step6](train/images/original/focusStep_6_timesR_size_30_sample_0100_resized.png)|![step6-deblurred](train/images/deblurred/focusStep_6_timesR_size_30_sample_0100_resized.png)|
+| 7 |![step7](train/images/original/focusStep_7_timesR_size_30_sample_0100_resized.png)|![step7-deblurred](train/images/deblurred/focusStep_7_timesR_size_30_sample_0100_resized.png)|
+| 8 |![step8](train/images/original/focusStep_8_timesR_size_30_sample_0100_resized.png)|![step8-deblurred](train/images/deblurred/focusStep_8_timesR_size_30_sample_0100_resized.png)|
+| 9 |![step9](train/images/original/focusStep_9_timesR_size_30_sample_0100_resized.png)|![step9-deblurred](train/images/deblurred/focusStep_9_timesR_size_30_sample_0100_resized.png)|
+| 10|![step10](train/images/original/focusStep_10_timesR_size_30_sample_0100_resized.png)|![step10-deblurred](train/images/deblurred/focusStep_10_timesR_size_30_sample_0100_resized.png)|
 
 * example images
 * remove GPU dependency
