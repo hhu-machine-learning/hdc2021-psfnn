@@ -126,7 +126,7 @@ A sharp input image, blurry target image, convolved sharp image + offset and the
 
 # Example Images (Times)
 
-| Step |         Original                    |         Deblurred                    |
+| Step |         Input                    |         Deblurred                    |
 |:----:|:-----------------------------------:|:------------------------------------:|
 | 0 |![step0](train/images/original/focusStep_0_timesR_size_30_sample_0100_resized.png)|![step0-deblurred](train/images/deblurred/focusStep_0_timesR_size_30_sample_0100_resized.png)|
 | 1 |![step1](train/images/original/focusStep_1_timesR_size_30_sample_0100_resized.png)|![step1-deblurred](train/images/deblurred/focusStep_1_timesR_size_30_sample_0100_resized.png)|
