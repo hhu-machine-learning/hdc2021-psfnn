@@ -71,6 +71,7 @@ After that, change to the `test` directory, modify `step` and `font` in `compute
 |7|96.04|93.95|
 |8|92.15|87.68|
 |9|83.63|70.54|
+|10|77.66|72.71|
 
 Notes:
 * The input images are simply used as-is for step 1, 2 and 3 without any deblurring since that passes the 70% OCR threshold of the challenge without wasting a few hours of additional compute.
