@@ -135,7 +135,7 @@ def main():
         del model
 
 def test():
-    step = 9
+    step = 4
     sample = 2
     font = "Times"
     model = torch.load(f"psfs/step_{step}.pth")
@@ -155,6 +155,9 @@ def test():
         r = model.psf_radius
 
         difference = torch.abs(sharp_convolved - blurry)
+
+        plt.imshow(model.psf.detach().cpu().numpy(), cmap='gray')
+        plt.show()
 
         for i, (title, img) in enumerate([
             ("sharp", sharp),
