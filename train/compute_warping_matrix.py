@@ -58,7 +58,7 @@ class Model(torch.nn.Module):
 
         x = torch.linspace(-1, 1, w, device=device)
         y = torch.linspace(-1, 1, h, device=device)
-        y, x = torch.meshgrid(y, x)
+        y, x = torch.meshgrid(y, x, indexing="ij")
 
         features = [x, y, 1, x*x, x*y, y*y, x*x*x, x*x*y, x*y*y, y*y*y]
 
@@ -152,7 +152,7 @@ def predict(params):
 
     x = torch.linspace(-1, 1, w, device=device)
     y = torch.linspace(-1, 1, h, device=device)
-    y, x = torch.meshgrid(y, x)
+    y, x = torch.meshgrid(y, x, indexing="ij")
 
     features = [x, y, 1, x*x, x*y, y*y, x*x*x, x*x*y, x*y*y, y*y*y]
 
