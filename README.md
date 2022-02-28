@@ -79,7 +79,7 @@ Notes:
 
 # Citations
 
-The neural network used here is adapted (almost entirely copied) from [https://github.com/MarcoForte/FBA_Matting](F, B, Alpha Matting)
+The neural network used here is adapted (almost entirely copied) from [F, B, Alpha Matting](https://github.com/MarcoForte/FBA_Matting)
 
 ```
 @article{forte2020fbamatting,
